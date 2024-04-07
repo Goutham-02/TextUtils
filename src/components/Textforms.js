@@ -4,11 +4,11 @@ import PropTypes from 'prop-types'
 export default function Textforms(props) {
     return (
         <div>
-            <div class="mb3">
+            <div className="mb-3">
                 <h1>{props.heading}</h1>
-                <label for="myBox" class='form-label'></label>Text Area
-                <textarea id="myBox" class="form-control" rows="8"></textarea>
+                <textarea id="myBox" className="form-control" rows="8"></textarea>
             </div>
+            <button className='btn btn-primary'>Convert to UpperCase</button>
         </div>
     )
 }
