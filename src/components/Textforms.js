@@ -1,33 +1,53 @@
 import React, {useState} from 'react'
-import PropTypes from 'prop-types'
 
 export default function Textforms(props) {
     const handleUpClick = () => {
-        console.log("Uppercase was clicked " + text);
         let newText = text.toUpperCase();
         setText(newText);
     }
 
     const handleOnChange = (event) => {
-        console.log("on change");
         setText(event.target.value);
     }
+
+    const handleLowClick = () => {
+        let newText = text.toLowerCase();
+        setText(newText);
+    }
+
+    const handleClearClick = () => {
+        let newText = '';
+        setText(newText);
+    }
+
     const [text, setText] = useState('');
+    let trimmedText = text.trim();
+    let numbers = trimmedText.split(" ").length;
+    let minread = 0.008*numbers;
+    
+    if (text === '') {
+        minread = 0;
+        numbers = 0;
+    }
+    
     return (
-        <div>
-            <div className="mb-3">
-                <h1>{props.heading}</h1>
-                <textarea id="myBox" placeholder='Enter text here' value={text} onChange={handleOnChange} className="form-control" rows="8"></textarea>
+        <>
+            <div className='container'>
+                <div className="mb-3">
+                    <h1>{props.heading}</h1>
+                    <textarea id="myBox" placeholder='Enter text here' value={text} onChange={handleOnChange} className="form-control" rows="8"></textarea>
+                </div>
+                <button className='btn btn-primary m-2' onClick={handleUpClick}>Convert to UpperCase</button>
+                <button className='btn btn-primary m-2' onClick={handleLowClick}>Convert to LowerCase</button>
+                <button className='btn btn-primary m-2' onClick={handleClearClick}>Clear Text</button>
             </div>
-            <button className='btn btn-primary' onClick={handleUpClick}>Convert to UpperCase</button>
-        </div>
+            <div className="container my-3">
+                <h1>Your Text Summary</h1>
+                <p>{numbers} word(s) and {text.length} characters</p>
+                <p>Approx. {minread} Minutes read</p>
+                <h2>Preview</h2>
+                <p>{text}</p>
+            </div>
+        </>
     )
-}
-
-Textforms.propTypes = {
-    textArea: PropTypes.string.isRequired
-}
-
-Textforms.defaultProps = {
-    textArea: "Set text here"
 }
