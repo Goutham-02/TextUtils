@@ -39,7 +39,7 @@ export default function Navbar(props) {
                         placeholder="Search"
                         aria-label="Search"
                     />
-                    <button type="button" class="btn btn-primary">Search</button>
+                    <button type="button" className="btn btn-primary">Search</button>
                 </form>
             </div>
         </nav>
