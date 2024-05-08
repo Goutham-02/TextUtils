@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 export default function Navbar(props) {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
             <a className="navbar-brand" href="/">
                 {props.title}
             </a>
@@ -32,7 +32,7 @@ export default function Navbar(props) {
                         </a>
                     </li>
                 </ul>
-                <form className="form-inline my-2 my-lg-0">
+                {/* <form className="form-inline my-2 my-lg-0">
                     <input
                         className="form-control mr-sm-2"
                         type="search"
@@ -40,7 +40,11 @@ export default function Navbar(props) {
                         aria-label="Search"
                     />
                     <button type="button" className="btn btn-primary">Search</button>
-                </form>
+                </form> */}
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Enable Dark Mode</label>
+                </div>
             </div>
         </nav>
     )
