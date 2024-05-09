@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import './buttonsStyles.css';
 
 export default function Textforms(props) {
     const handleUpClick = () => {
@@ -41,23 +42,23 @@ export default function Textforms(props) {
     
     return (
         <>
-            <div className='container'>
+            <div className='container' style={{color : props.mode === 'dark' ? 'white' : 'black'}}>
                 <div className="mb-3">
                     <h1>{props.heading}</h1>
-                    <textarea id="myBox" placeholder='Enter text here' value={text} onChange={handleOnChange} className="form-control" rows="8"></textarea>
+                    <textarea id="myBox" placeholder='Enter text here' value={text} onChange={handleOnChange} className="form-control" rows="8" style={{backgroundColor : props.mode === 'dark' ? '#9BA4B5' : 'white', color: props.mode === 'dark' ? 'white' : 'black'}}></textarea>
                 </div>
-                <button className='btn btn-primary m-2' onClick={handleUpClick}>Convert to UpperCase</button>
-                <button className='btn btn-primary m-2' onClick={handleLowClick}>Convert to LowerCase</button>
-                <button className='btn btn-primary m-2' onClick={handleClearClick}>Clear Text</button>
-                <button className='btn btn-primary m-2' onClick={handleCopy}>Copy Text</button>
-                <button className='btn btn-primary m-2' onClick={handleExtraSpaces}>Remove Extra Spaces</button>
+                <button className={`btn ${props.mode === 'dark' ? 'btn-light' : 'btn-dark'} m-2`} onClick={handleUpClick}>Convert to UpperCase</button>
+                <button className={`btn ${props.mode === 'dark' ? 'btn-light' : 'btn-dark'} m-2`} onClick={handleLowClick}>Convert to LowerCase</button>
+                <button className={`btn ${props.mode === 'dark' ? 'btn-light' : 'btn-dark'} m-2`} onClick={handleClearClick}>Clear Text</button>
+                <button className={`btn ${props.mode === 'dark' ? 'btn-light' : 'btn-dark'} m-2`} onClick={handleCopy}>Copy Text</button>
+                <button className={`btn ${props.mode === 'dark' ? 'btn-light' : 'btn-dark'} m-2`} onClick={handleExtraSpaces}>Remove Extra Spaces</button>
             </div>
-            <div className="container my-3">
+            <div className="container my-3" style={{color : props.mode === 'dark' ? 'white' : 'black'}}>
                 <h1>Your Text Summary</h1>
                 <p>{numbers} word(s) and {text.length} characters</p>
                 <p>Approx. {minread} Minutes read</p>
                 <h2>Preview</h2>
-                <p>{text}</p>
+                <p>{text.length>0 ? text:"Enter something to preview"}</p>
             </div>
         </>
     )

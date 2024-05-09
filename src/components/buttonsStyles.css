@@ -1,0 +1,11 @@
+.btn-dark {
+    background-color: #EEF7FF;
+    border-color: #EEF7FF; 
+    color: rgb(50, 50, 50);
+}
+
+.btn-light {
+    background-color: #F1F6F9;
+    border-color: #212A3E; 
+    color: black;
+}
