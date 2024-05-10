@@ -5,6 +5,7 @@ export default function Textforms(props) {
     const handleUpClick = () => {
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("Converted to UpperCase", "success");
     }
 
     const handleOnChange = (event) => {
@@ -14,20 +15,24 @@ export default function Textforms(props) {
     const handleLowClick = () => {
         let newText = text.toLowerCase();
         setText(newText);
+        props.showAlert("Converted to LowerCase", "success");
     }
 
     const handleClearClick = () => {
         let newText = '';
         setText(newText);
+        props.showAlert("Text Cleared", "success");
     }
 
     const handleCopy = () => {
         navigator.clipboard.writeText(text);
+        props.showAlert("Text Copied to Clipboard", "success");
     }
 
     const handleExtraSpaces = () => {
         let newText = text.split(/[ ]+/);
         setText(newText.join(" "));
+        props.showAlert("Extra Spaces Removed", "success");
     }
 
     const [text, setText] = useState('');
@@ -45,7 +50,7 @@ export default function Textforms(props) {
             <div className='container' style={{color : props.mode === 'dark' ? 'white' : 'black'}}>
                 <div className="mb-3">
                     <h1>{props.heading}</h1>
-                    <textarea id="myBox" placeholder='Enter text here' value={text} onChange={handleOnChange} className="form-control" rows="8" style={{backgroundColor : props.mode === 'dark' ? '#9BA4B5' : 'white', color: props.mode === 'dark' ? 'white' : 'black'}}></textarea>
+                    <textarea id="myBox" placeholder='Enter text here' value={text} onChange={handleOnChange} className="form-control" rows="8" style={{backgroundColor : props.mode === 'dark' ? '#4c5463' : 'white', color: props.mode === 'dark' ? 'white' : 'black'}}></textarea>
                 </div>
                 <button className={`btn ${props.mode === 'dark' ? 'btn-light' : 'btn-dark'} m-2`} onClick={handleUpClick}>Convert to UpperCase</button>
                 <button className={`btn ${props.mode === 'dark' ? 'btn-light' : 'btn-dark'} m-2`} onClick={handleLowClick}>Convert to LowerCase</button>
