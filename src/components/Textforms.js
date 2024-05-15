@@ -37,7 +37,7 @@ export default function Textforms(props) {
 
     const [text, setText] = useState('');
     let trimmedText = text.trim();
-    let numbers = trimmedText.split(" ").length;
+    let numbers = trimmedText.split(" ").filter((element)=>{return element.length!==0}).length;
     let minread = 0.008*numbers;
     
     if (text === '') {
